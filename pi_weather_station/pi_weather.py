@@ -1,3 +1,6 @@
+#!/usr/bin/python
+
+
 import urllib2
 import json
 import datetime
@@ -6,7 +9,7 @@ import datetime
 f = urllib2.urlopen('http://api.wunderground.com/api/f83d46c368361137/geolookup/conditions/q/MD/Columbia.json')
 
 #open the data file to write to.
-f_file = open('./data.dat','w')
+f_file = open('./data.dat','a')
 
 # Read the response.
 json_string = f.read()
