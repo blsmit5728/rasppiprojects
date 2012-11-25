@@ -35,7 +35,7 @@ print "Current dew point is: %s mph" % (dew_pt)
 now = datetime.datetime.now()
 
 # now just get the date
-str_date = str(now.month) + "-" + str(now.day) + "-" + str(now.year)
+str_date = str(now.month) + "-" + str(now.day) + "-" + str(now.year) + "-" + str(now.hour)
 st_date = str(str_date)
 
 # format the output
