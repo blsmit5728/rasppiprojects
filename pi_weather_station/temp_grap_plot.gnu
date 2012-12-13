@@ -7,6 +7,7 @@ set xdata time
 set timefmt "%m-%d-%Y-%H"
 set format x "%m-%d-%Y-%H"
 set xlabel "Date Time"
+set xtics mirror in autofreq rotate
 
 set ylabel "Degrees F"
 set yrange [0:75]
