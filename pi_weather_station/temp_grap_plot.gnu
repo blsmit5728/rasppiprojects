@@ -23,3 +23,5 @@ plot "/home/pi/data.dat" using 1:2 title "Temp F", \
 "" using 1:4 title "Dew Point"
 
 
+
+
