@@ -34,6 +34,8 @@ print "Current Wind speed is: %s mph" % (wind)
 dew_pt = parsed_json['current_observation']['dewpoint_f']
 print "Current dew point is: %s mph" % (dew_pt)
 
+wc_pt = parsed_json['current_observation']['windchill_f']
+print "Current dew point is: %s mph" % (wc_pt)
 # get the datetime
 now = datetime.datetime.now()
 
@@ -42,7 +44,7 @@ str_date = str(now.month) + "-" + str(now.day) + "-" + str(now.year) + "-" + str
 st_date = str(str_date)
 
 # format the output
-st = st_date + " " + str(temp_f) + " " + str(wind) + " " + str(dew_pt) + "\n"
+st = st_date + " " + str(temp_f) + " " + str(wind) + " " + str(dew_pt) + " " + str(wc_pt) + "\n"
 
 f_file.write(st)
 
