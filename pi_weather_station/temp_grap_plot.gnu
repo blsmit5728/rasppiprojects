@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot
 reset
 set terminal png size 1900,1080
-set output "/var/www/deg_plot.png"
+set output "/home/bsmith/bsmith_public/deg_plot.png"
 
 set xdata time
 set timefmt "%m-%d-%Y-%H"
@@ -18,7 +18,7 @@ set grid
 
 set style data linespoints
 
-plot "/home/bsmith/data.dat" using 1:2 title "Temp F", \
+plot "/home/bsmith/repos/rasppiprojects/pi_weather_station/data.dat" using 1:2 title "Temp F", \
 "" using 1:3 title "Wind speed",\
 "" using 1:4 title "Dew Point"
 
