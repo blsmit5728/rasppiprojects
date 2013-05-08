@@ -10,7 +10,7 @@ set xlabel "Date Time"
 set xtics mirror in autofreq rotate
 
 set ylabel "Degrees F"
-set yrange [-10:75]
+set yrange [-10:100]
 
 set title "Temperature in Columbia"
 set key reverse Left outside

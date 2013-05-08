@@ -10,6 +10,7 @@ f = urllib2.urlopen('http://api.wunderground.com/api/f83d46c368361137/geolookup/
 
 #open the data file to write to.
 f_file = open('/home/bsmith/repos/rasppiprojects/pi_weather_station/data.dat','a')
+rain_file = open('/home/bsmith/repos/rasppiprojects/pi_weather_station/rain.dat','a')
 
 # Read the response.
 json_string = f.read()
@@ -22,6 +23,9 @@ location = parsed_json['location']['city']
 
 # grab the temp
 temp_f = parsed_json['current_observation']['temp_f']
+
+#grab the rainfall 
+rain = parsed_json['current_observation']['precip_today_in']
 
 # just a temp print
 print "Current temperature in %s is: %s" % (location, temp_f)
@@ -46,8 +50,14 @@ st_date = str(str_date)
 # format the output
 st = st_date + " " + str(temp_f) + " " + str(wind) + " " + str(dew_pt) + " " + str(wc_pt) + "\n"
 
+#make a rain string
+rain_str =  st_date + " " +  str(rain) + "\n"
+
+#write the files
 f_file.write(st)
+rain_file.write(rain_str)
 
 # lets put this in this form: date_temp_wind_dew_
 f_file.close()
+rain_file.close()
 
