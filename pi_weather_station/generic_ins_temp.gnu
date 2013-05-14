@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot
 reset
 set terminal png size 1900,1080
-set output "/home/bsmith/bsmith_public/inside_plot.png"
+set output "/home/bsmith/bsmith_public/ins_plots/DATE_REPL.png"
 
 set xdata time
 set timefmt "%H-%M"
@@ -18,7 +18,7 @@ set grid
 
 set style data linespoints
 
-plot "/beaglebone/2013-5-10" using 1:2 title "Temp F"
+plot "/beaglebone/DATE_REPL" using 1:2 title "Temp F"
 
 
 
