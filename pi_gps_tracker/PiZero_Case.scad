@@ -116,7 +116,7 @@ module piZeroBottom()
             }   
             difference()
             {       
-                stand_offs(3);
+                translate([0,0,-0.5])stand_offs(3);
                 drill_holes_bot();
             }
         }
@@ -126,5 +126,9 @@ module piZeroBottom()
 //translate([0,0,7])rounded_rect(65,30,2,3,40);
 //rotate(a=[0,180,0])translate([0,0,-14])piZeroBottom();
 translate([0,40,0])piZeroBottom();
+//difference()
+//{
 piZeroTop();
+//    translate([-15,-5,-1])text("MYPi");
+//}
 
