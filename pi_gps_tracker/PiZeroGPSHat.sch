@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.3.0">
+<eagle version="7.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9336,6 +9336,12 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="TP5" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="TP6" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="JP1" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="LED2" library="adafruit" deviceset="LED" device="CHIPLED_0805" value="1"/>
+<part name="R5" library="adafruit" deviceset="R-US_" device="R0805" value="470"/>
+<part name="GND13" library="supply1" deviceset="GND" device=""/>
+<part name="LED3" library="adafruit" deviceset="LED" device="CHIPLED_0805" value="1"/>
+<part name="R6" library="adafruit" deviceset="R-US_" device="R0805" value="470"/>
+<part name="GND14" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9370,6 +9376,12 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="TP5" gate="G$1" x="160.02" y="30.48" rot="R270"/>
 <instance part="TP6" gate="G$1" x="20.32" y="-15.24" rot="R180"/>
 <instance part="JP1" gate="G$1" x="27.94" y="88.9"/>
+<instance part="LED2" gate="G$1" x="137.16" y="76.2" rot="R270"/>
+<instance part="R5" gate="G$1" x="121.92" y="76.2"/>
+<instance part="GND13" gate="1" x="114.3" y="76.2" rot="R270"/>
+<instance part="LED3" gate="G$1" x="152.4" y="63.5" rot="R270"/>
+<instance part="R6" gate="G$1" x="142.24" y="63.5"/>
+<instance part="GND14" gate="1" x="134.62" y="63.5" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -9488,6 +9500,14 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="JP1" gate="G$1" pin="2"/>
 <wire x1="20.32" y1="88.9" x2="25.4" y2="88.9" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R5" gate="G$1" pin="1"/>
+<pinref part="GND13" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R6" gate="G$1" pin="1"/>
+<pinref part="GND14" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="UART0_TXD" class="0">
 <segment>
@@ -9531,11 +9551,17 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="76.2" y1="38.1" x2="73.66" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$3" class="0">
+<net name="1PPS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="1PPS"/>
 <wire x1="137.16" y1="30.48" x2="157.48" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="TP5" gate="G$1" pin="TP"/>
+<label x="152.4" y="30.48" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="LED3" gate="G$1" pin="A"/>
+<wire x1="154.94" y1="63.5" x2="167.64" y2="63.5" width="0.1524" layer="91"/>
+<label x="162.56" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -9598,6 +9624,11 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="40.64" y1="93.98" x2="40.64" y2="111.76" width="0.1524" layer="91"/>
 <junction x="40.64" y="111.76"/>
+</segment>
+<segment>
+<pinref part="LED2" gate="G$1" pin="A"/>
+<wire x1="139.7" y1="76.2" x2="152.4" y2="76.2" width="0.1524" layer="91"/>
+<label x="149.86" y="76.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -9667,6 +9698,19 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="JP1" gate="G$1" pin="1"/>
 <wire x1="25.4" y1="91.44" x2="33.02" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="91.44" x2="33.02" y2="81.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="LED2" gate="G$1" pin="C"/>
+<pinref part="R5" gate="G$1" pin="2"/>
+<wire x1="132.08" y1="76.2" x2="127" y2="76.2" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="LED3" gate="G$1" pin="C"/>
+<pinref part="R6" gate="G$1" pin="2"/>
 </segment>
 </net>
 </nets>
