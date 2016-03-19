@@ -9313,7 +9313,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="U1" library="adafruit" deviceset="GPS_FGPMMOPA6H" device=""/>
 <part name="R1" library="adafruit" deviceset="R-US_" device="R0805" value="9.9k"/>
 <part name="R2" library="adafruit" deviceset="R-US_" device="R0805" value="470"/>
-<part name="LED1" library="adafruit" deviceset="LED" device="CHIPLED_0805" value="1"/>
+<part name="_" library="adafruit" deviceset="LED" device="CHIPLED_0805" value="1"/>
 <part name="IC1" library="microchip" deviceset="24*" device="SM" technology="AA32A"/>
 <part name="C1" library="resistor" deviceset="C-US" device="C0402" value="0.1uF"/>
 <part name="D1" library="diode" deviceset="ES2D" device=""/>
@@ -9353,7 +9353,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="U1" gate="G$1" x="121.92" y="38.1"/>
 <instance part="R1" gate="G$1" x="35.56" y="106.68" rot="R90"/>
 <instance part="R2" gate="G$1" x="68.58" y="38.1"/>
-<instance part="LED1" gate="G$1" x="81.28" y="38.1" rot="R270"/>
+<instance part="_" gate="G$1" x="81.28" y="38.1" rot="R270"/>
 <instance part="IC1" gate="G$1" x="71.12" y="88.9"/>
 <instance part="C1" gate="G$1" x="91.44" y="55.88"/>
 <instance part="D1" gate="G$1" x="137.16" y="-5.08"/>
@@ -9540,13 +9540,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <net name="N$1" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="3D-FIX"/>
-<pinref part="LED1" gate="G$1" pin="A"/>
+<pinref part="_" gate="G$1" pin="A"/>
 <wire x1="106.68" y1="38.1" x2="83.82" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
 <segment>
-<pinref part="LED1" gate="G$1" pin="C"/>
+<pinref part="_" gate="G$1" pin="C"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="76.2" y1="38.1" x2="73.66" y2="38.1" width="0.1524" layer="91"/>
 </segment>
