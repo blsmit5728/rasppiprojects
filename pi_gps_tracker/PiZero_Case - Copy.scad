@@ -101,34 +101,45 @@ module piZeroTop()
         }
     }
 }
+module ports()
+{
+    
+}
+ports();
 module one()
 {
-    difference()
+    difference(){
+    union()
     {
         difference()
         {
-            union()
+            difference()
             {
-                difference()
+                union()
                 {
-                    translate([0,0,10])rounded_rect(70,35,20,3,40);
-                    translate([0,0,13])rounded_rect(66,31,20,3,40);
+                    difference()
+                    {
+                        translate([0,0,10])rounded_rect(73,38,20,3,40);
+                        translate([0,0,13])rounded_rect(66,31,20,3,40);
+                    }
+                    difference()
+                    {       
+                        translate([0,0,1.25])stand_offs(3);
+                        drill_holes_bot();
+                    }
                 }
-                difference()
-                {       
-                    translate([0,0,1.25])stand_offs(3);
-                    drill_holes_bot();
-                }
+                drill_holes_bot();
             }
-            drill_holes_bot();
+            translate([37,0,6.5])cube([10,18,7],center=true);
         }
-        translate([37,0,6.5])cube([10,18,7],center=true);
     }
+    translate([0,17,10])cube([55,5,8],center=true);
+}
 }/* end module */
 
 module two()
 {
-    translate([0,0,25])rounded_rect(70,35,3,3,40);
+    translate([0,-50,0])rounded_rect(73,38,4,3,40);
 }
 module piZeroBottom()
 {
@@ -154,7 +165,11 @@ module piZeroBottom()
 //translate([0,0,7])rounded_rect(65,30,2,3,40);
 //rotate(a=[0,180,0])translate([0,0,-14])piZeroBottom();
 one();
-two();
+difference()
+{
+    translate([0,0,2])two();
+    translate([-16,-55,3.5])text(text="TOP",size=12,valign=center,halign=center,center=true);
+}
 translate([0,40,0])piZeroBottom();
 
 
