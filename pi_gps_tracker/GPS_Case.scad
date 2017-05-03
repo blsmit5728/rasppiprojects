@@ -201,13 +201,13 @@ module display()
     //translate([13,46,4])cube([2,8,8],center=true);
     //translate([13,-46,4])cube([2,8,8],center=true);
 }
-translate([40,0,0])display();
+translate([40,0,1])display();
 //translate([-100,0,0])rotate([0,0,0])display();
 //rotate([0,0,0])translate([-13,18,5])battery();
 //bottom();
 //color("Green"){translate([-16,-3,0])battery();}
 //rotate([0,0,90])translate([-62,-32,0])powerboost();
-powerboost();
+translate([0,0,0.5])powerboost();
 //difference()
 //{
 //    box();
