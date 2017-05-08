@@ -192,11 +192,15 @@ module box()
         }
         union()
         {
-            rotate([0,0,90])translate([-8,-53,-9])cube([16,5,5]);
-            rotate([0,0,90])translate([26,-53,-8])cube([16,5,5]);
-            translate([-17,47,-8])cube([53,5,5]);
+            rotate([0,0,90])translate([-52,-52,-13])cube([104,2,5]);
+            rotate([0,0,0])translate([-52,-52,-13])cube([104,2,5]);
+            rotate([0,0,180])translate([-52,-52,-13])cube([104,2,5]);
+            rotate([0,0,270])translate([-52,-52,-13])cube([104,2,5]);
+            //rotate([0,0,90])translate([26,-53,-8])cube([16,5,5]);
+            //translate([-17,47,-8])cube([53,5,5]);
         }
     }
+    
     //difference()
     //{
     //    translate([0,0,-2])box_stand_offs(26.5);
@@ -204,10 +208,70 @@ module box()
     //}
     //translate([50,-25,0])rotate([180,90,0])display();
 }
+
+module wall_blank(length,wall_height)
+{
+    cube([length,2,wall_height]);
+}
+module wall_1(length, height)
+{
+    wall_blank(length,height);
+}
+module wall_2(length, height)
+{
+    wall_blank(length,height);
+}
+module wall_3_pi(length, height)
+{
+    difference()
+    {
+        wall_blank(length,height);
+        translate([14,-2,5])cube([53,16,5]);
+    }
+}
+module wall_4_disp(length, height)
+{
+    difference()
+    {
+        wall_blank(length,height);
+        union()
+        {
+            translate([44,-2,5])cube([16,16,5]);
+            translate([78,-2,5])cube([16,16,8]);            
+            rotate([0,90,90])translate([-26.5,-37,-3])cube([19,26,15]);
+        }
+    }
+    rotate([270,90,0])translate([-17,-24,1])display();
+}
+//wall_4_disp(104,35);
+module walls(wall_height)
+{
+    union()
+    {
+        rotate([0,0,90])translate([-52,-52,-13])wall_4_disp(104,wall_height);
+        rotate([0,0,0])translate([-50,-52,-13])wall_2(100,wall_height);
+        rotate([0,0,180])translate([-50,-52,-13])wall_3_pi(100,wall_height);
+        rotate([0,0,270])translate([-52,-52,-13])wall_1(104,wall_height);        
+    }
+}
+//translate([0,0,15])walls(35);
+
+
 module top()
 {
-    rounded_rect(98,98,1,3,40);
+    difference()
+    {
+        rounded_rect(106,106,3,3,40);
+        union()
+        {          
+            rotate([0,0,90])translate([-52,-52,-13])cube([104,2,13]);
+            rotate([0,0,0])translate([-52,-52,-13])cube([104,2,13]);
+            rotate([0,0,180])translate([-52,-52,-13])cube([104,2,13]);
+            rotate([0,0,270])translate([-52,-52,-13])cube([104,2,13]);
+        }
+    }
 }
+
 module holes()
 {
     translate([17,50,-1.5])cube([55,5,5],center=true);
@@ -280,12 +344,28 @@ module display()
 }
 //translate([0,0,1.25])display();
 //translate([-100,0,0])rotate([0,0,0])display();
+
+/* Good Working Area */
 rotate([0,0,90])translate([-16.5,16,8])battery();
 translate([0,0,15])box();
+//translate([0,0,15])walls(35);
+rotate([0,0,0])translate([31,0,3.5])powerboost();
+rotate([180,0,0])translate([110,0,-2])top();
+
+
+wall_height = 35;
+rotate([90,0,90])translate([70,0,0])wall_4_disp(104,wall_height);
+rotate([90,0,90])translate([70,0,80])wall_2(100,wall_height);
+rotate([90,0,90])translate([70,0,-40])wall_3_pi(100,wall_height);
+rotate([90,0,90])translate([70,0,40])wall_1(104,wall_height);
+
+
+
 //translate([0,0,25])top();
 //translate([0,0,1.5])bottom();
 //color("Green"){translate([-16,-3,0])battery();}
-rotate([0,0,0])translate([31,0,3.5])powerboost();
+
+
 //translate([0,0,0.5])powerboost();
 //difference()
 //{
