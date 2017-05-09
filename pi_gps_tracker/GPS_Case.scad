@@ -201,11 +201,11 @@ module box()
         }
     }
     
-    //difference()
-    //{
-    //    translate([0,0,-2])box_stand_offs(26.5);
-    //    translate([0,0,-2])box_drill_holes_bot(60);
-    //}
+    difference()
+    {
+        translate([0,0,1])box_stand_offs(35);
+        translate([0,0,-2])box_drill_holes_bot(60);
+    }
     //translate([50,-25,0])rotate([180,90,0])display();
 }
 
@@ -268,6 +268,8 @@ module top()
             rotate([0,0,0])translate([-52,-52,-13])cube([104,2,13]);
             rotate([0,0,180])translate([-52,-52,-13])cube([104,2,13]);
             rotate([0,0,270])translate([-52,-52,-13])cube([104,2,13]);
+            translate([0,0,-1])box_stand_offs(5);
+            translate([0,0,-2])box_drill_holes_bot(60);
         }
     }
 }
@@ -346,7 +348,7 @@ module display()
 //translate([-100,0,0])rotate([0,0,0])display();
 
 /* Good Working Area */
-rotate([0,0,90])translate([-16.5,16,8])battery();
+rotate([0,0,90])translate([-16,16,8])battery();
 translate([0,0,15])box();
 //translate([0,0,15])walls(35);
 rotate([0,0,0])translate([31,0,3.5])powerboost();
