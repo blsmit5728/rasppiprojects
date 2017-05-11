@@ -68,14 +68,17 @@ module box_stand_offs(height)
     x = 46.5;
     union()
     {
-        translate([y,-x,cly_off_up])
-        cylinder(height,cly_radius1,cly_radius1,center=true,$fn=cly_sides); 
-        translate([-y,-x,cly_off_up])
-        cylinder(height,cly_radius1,cly_radius1,center=true,$fn=cly_sides); 
-        translate([y,x,cly_off_up])
-        cylinder(height,cly_radius1,cly_radius1,center=true,$fn=cly_sides); 
-        translate([-y,x,cly_off_up])
-        cylinder(height,cly_radius1,cly_radius1,center=true,$fn=cly_sides); 
+        translate([y,-x,-5])cube([5,5,height/2],center=true);
+        translate([-y,-x,-5])cube([5,5,height/2],center=true);
+        translate([y,x,-5])cube([5,5,height/2],center=true);
+        translate([-y,x,-5])cube([5,5,height/2],center=true);
+        //cylinder(height,cly_radius1,cly_radius1,center=true,$fn=cly_sides); 
+        //translate([-y,-x,cly_off_up])
+        //cylinder(height,cly_radius1,cly_radius1,center=true,$fn=cly_sides); 
+        //translate([y,x,cly_off_up])
+        //cylinder(height,cly_radius1,cly_radius1,center=true,$fn=cly_sides); 
+        //translate([-y,x,cly_off_up])
+        //cylinder(height,cly_radius1,cly_radius1,center=true,$fn=cly_sides); 
     }
 }
 
@@ -179,23 +182,23 @@ module piZero_mount()
 
 module box()
 {
-    translate([9,34,-12])piZero_mount();
+    translate([9,34,-12.3])piZero_mount();
     difference()
     {
         union()
         {
             difference()
             {
-                rounded_rect(106,106,29,3,40);
+                rounded_rect(107,107,29,3,40);
                 translate([0,0,4])rounded_rect(120,120,30,3,40);
             }        
         }
         union()
         {
-            rotate([0,0,90])translate([-52,-52,-13])cube([104,2,5]);
-            rotate([0,0,0])translate([-52,-52,-13])cube([104,2,5]);
-            rotate([0,0,180])translate([-52,-52,-13])cube([104,2,5]);
-            rotate([0,0,270])translate([-52,-52,-13])cube([104,2,5]);
+            rotate([0,0,90])translate([-52,-52,-13])cube([104,2.125,5]);
+            rotate([0,0,0])translate([-52,-52,-13])cube([104,2.125,5]);
+            rotate([0,0,180])translate([-52,-52,-13])cube([104,2.125,5]);
+            rotate([0,0,270])translate([-52,-52,-13])cube([104,2.125,5]);
             //rotate([0,0,90])translate([26,-53,-8])cube([16,5,5]);
             //translate([-17,47,-8])cube([53,5,5]);
         }
@@ -261,17 +264,20 @@ module top()
 {
     difference()
     {
-        rounded_rect(106,106,3,3,40);
+        union()
+        {
+            rounded_rect(107,107,3,3,40);
+            translate([0,0,-4])box_stand_offs(30);
+        }
         union()
         {          
-            rotate([0,0,90])translate([-52,-52,-13])cube([104,2,13]);
-            rotate([0,0,0])translate([-52,-52,-13])cube([104,2,13]);
-            rotate([0,0,180])translate([-52,-52,-13])cube([104,2,13]);
-            rotate([0,0,270])translate([-52,-52,-13])cube([104,2,13]);
-            translate([0,0,-1])box_stand_offs(5);
-            translate([0,0,-2])box_drill_holes_bot(60);
+            rotate([0,0,90])translate([-52,-52,-13])cube([104,2.125,13]);
+            rotate([0,0,0])translate([-52,-52,-13])cube([104,2.125,13]);
+            rotate([0,0,180])translate([-52,-52,-13])cube([104,2.125,13]);
+            rotate([0,0,270])translate([-52,-52,-13])cube([104,2.125,13]);
         }
     }
+    
 }
 
 module holes()
@@ -288,7 +294,7 @@ module powerboost()
         {
             translate([(36.2/2)-2.542,(17.65/2),0])cylinder(3,(1.25+1),(1.25+1),$fn=50);
             translate([(36.2/2)-2.542,-(17.65/2),0])cylinder(3,(1.25+1),(1.25+1),$fn=50);
-            cube([36.2,22.86,1],center=true);
+            //cube([36.2,22.86,1],center=true);
         }
         union()
         {
@@ -344,34 +350,21 @@ module display()
     //translate([13,46,4])cube([2,8,8],center=true);
     //translate([13,-46,4])cube([2,8,8],center=true);
 }
-//translate([0,0,1.25])display();
-//translate([-100,0,0])rotate([0,0,0])display();
-
-/* Good Working Area */
-rotate([0,0,90])translate([-16,16,8])battery();
-translate([0,0,15])box();
-//translate([0,0,15])walls(35);
-rotate([0,0,0])translate([31,0,3.5])powerboost();
-rotate([180,0,0])translate([110,0,-2])top();
 
 
-wall_height = 35;
-rotate([90,0,90])translate([70,0,0])wall_4_disp(104,wall_height);
-rotate([90,0,90])translate([70,0,80])wall_2(100,wall_height);
-rotate([90,0,90])translate([70,0,-40])wall_3_pi(100,wall_height);
-rotate([90,0,90])translate([70,0,40])wall_1(104,wall_height);
+module design()
+{
+    rotate([0,0,90])translate([-16,16,8])battery();
+    translate([0,0,14.5])box();
+    //translate([0,0,15])walls(35);
+    rotate([0,0,0])translate([31,0,3.5])powerboost();
+    rotate([180,0,0])translate([110,0,-2])top();
+    wall_height = 35;
+    rotate([90,0,90])translate([70,0,0])wall_4_disp(104,wall_height);
+    rotate([90,0,90])translate([70,0,80])wall_2(100,wall_height);
+    rotate([90,0,90])translate([70,0,-40])wall_3_pi(100,wall_height);
+    rotate([90,0,90])translate([70,0,40])wall_1(104,wall_height);
+}
 
-
-
-//translate([0,0,25])top();
-//translate([0,0,1.5])bottom();
-//color("Green"){translate([-16,-3,0])battery();}
-
-
-//translate([0,0,0.5])powerboost();
-//difference()
-//{
-//    box();
-//    holes();
-//}
+design();
 
