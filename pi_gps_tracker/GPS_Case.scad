@@ -283,10 +283,10 @@ module top()
             }
             union()
             {          
-                rotate([0,0,90])translate([-52,-52,2])cube([104,2,2]);
-                rotate([0,0,0])translate([-52,-52,2])cube([104,2,2]);
-                rotate([0,0,180])translate([-52,-52,2])cube([104,2,2]);
-                rotate([0,0,270])translate([-52,-52,2])cube([104,2,2]);            
+                rotate([0,0,90])translate([-52,-52,2])cube([104,2.125,2]);
+                rotate([0,0,0])translate([-52,-52,2])cube([104,2.125,2]);
+                rotate([0,0,180])translate([-52,-52,2])cube([104,2.125,2]);
+                rotate([0,0,270])translate([-52,-52,2])cube([104,2.125,2]);            
                 translate([0,0,-2])box_drill_holes_bot(1.75,1.75,60);
             }
         }
