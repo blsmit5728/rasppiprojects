@@ -116,20 +116,29 @@ module top_counter_sinks(r1,r2,h,t)
 module rounded_rect(x,y,h,rad,r_ness)
 {
     r_height=h;
-    cube2_l = y - ((rad * 2) - 1);
-    cube1_w = x - ((rad * 2) - 1);
-    r_center_x = cube1_w/2 + rad;
-    r_center_y = cube2_l/2 + rad;
+    xp = x - rad*2;
+    yp = y - rad*2;
+    cxp = x - rad*2;
+    cyp = y - rad*2;
     union()
     {
-        translate([-(.5*x),-(.5*y),0])cube([x,y,h]);
-        translate([-(.5*(6+x)),-(.5*(y-6)),0])cube([x+6,y-6,h]);
-        translate([r_center_x,r_center_y,0])cylinder(h,rad,rad,$fn=r_ness);
-        translate([-r_center_x,-r_center_y,0])cylinder(h,rad,rad,$fn=r_ness);
-        translate([r_center_x,-r_center_y,0])cylinder(h,rad,rad,$fn=r_ness);
-        translate([-r_center_x,r_center_y,0])cylinder(h,rad,rad,$fn=r_ness);
+        translate([-(.5*xp),-(.5*y),0])cube([xp,y,h]);
+        translate([-(.5*x),-(.5*yp),0])cube([x,yp,h]);
+        translate([.5*cxp,.5*cyp,0])cylinder(h,rad,rad,$fn=r_ness);
+        translate([-.5*cxp,.5*cyp,0])cylinder(h,rad,rad,$fn=r_ness);
+        translate([-.5*cxp,-.5*cyp,0])cylinder(h,rad,rad,$fn=r_ness);
+        translate([.5*cxp,-.5*cyp,0])cylinder(h,rad,rad,$fn=r_ness);
     }
 }
+module rounded_square(d,r) {
+    minkowski() 
+    {
+        cube([20,20,2]);
+        cylinder(r=6,h=1,$fn=50);
+    }
+}
+//rounded_square([20,30], 5);
+rounded_rect(20,20,4,1,40);
 
 module piZeroTop()
 {
@@ -205,7 +214,8 @@ module box(x,y,h)
     {
         union()
         {
-            translate([-(.5*x),-(.5*y),0])cube([x,y,h]);
+            rounded_rect(x,y,h,3,40);
+            //translate([-(.5*x),-(.5*y),0])cube([x,y,h]);
             translate([0,0,h])box_stand_offs(standoff,standoff,35/2);
         }
         
